@@ -23,6 +23,9 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1")
+
+	// local jar
+	implementation(fileTree("libs/com-chigirh-tools-common-0.0.1-SNAPSHOT-plain.jar"))
 }
 
 tasks.withType<KotlinCompile> {

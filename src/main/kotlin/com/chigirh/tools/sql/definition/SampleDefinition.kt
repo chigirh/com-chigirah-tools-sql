@@ -7,7 +7,5 @@ class SampleDefinition : TableDefinition(
         ColumnDefinition(index = 1, name = "sample_bool"),
         ColumnDefinition(index = 2, name = "sample_datetime"),
         ColumnDefinition(index = 3, name = "sample_number"),
-
-        ColumnDefinition(index = 900, name = "created_by"),
     ),
 )
