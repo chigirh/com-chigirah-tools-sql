@@ -6,15 +6,16 @@ import com.chigirh.tools.sql.row.RowBase
 import java.nio.file.Path
 
 object InsertQueryFacade {
-    fun TableDefinition.generateSql(rows: List<RowBase>): String {
+    fun TableDefinition.generateSql(rows: List<RowBase>): String? {
+        if (rows.isEmpty()) return null
         val sb = StringBuilder()
         sb.append(this.generateInsert()).append("\r\n")
         sb.append(rows.joinToString(",\r\n", "", ";") { this.generateValues(it) })
         return sb.toString()
     }
 
-    fun TableDefinition.generateSqlFile(fileName: String, rows: List<RowBase>): Path {
-        val sql = generateSql(rows)
+    fun TableDefinition.generateSqlFile(fileName: String, rows: List<RowBase>): Path? {
+        val sql = generateSql(rows) ?: return null
         return FileUtil.createAndWrite(path = "sqls", fileName = "$fileName.sql", text = sql)
     }
 }
