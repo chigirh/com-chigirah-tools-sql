@@ -12,13 +12,13 @@ abstract class TableDefinition(
     fun generateInsert(): String {
         val sb = StringBuilder()
         sb.append("insert into $name ")
-            .append(columns.sortedBy { it.index }.joinToString(",", "(", ")") { it.name })
+            .append(columns.sortedBy { it.index }.joinToString(", ", "(", ")") { it.name })
             .append(" values ")
         return sb.toString()
     }
 
     fun generateValues(row: RowBase) =
-        columns.sortedBy { it.index }.joinToString(",", "(", ")") { it.getValue(row) }
+        columns.sortedBy { it.index }.joinToString(", ", "(", ")") { it.getValue(row) }
 }
 
 data class ColumnDefinition(
