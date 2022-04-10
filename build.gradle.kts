@@ -26,6 +26,9 @@ dependencies {
 
 	// local jar
 	implementation(fileTree("libs/com-chigirh-tools-common-0.0.2-SNAPSHOT-plain.jar"))
+
+	// commons
+	implementation("commons-io:commons-io:2.6")
 }
 
 tasks.withType<KotlinCompile> {
