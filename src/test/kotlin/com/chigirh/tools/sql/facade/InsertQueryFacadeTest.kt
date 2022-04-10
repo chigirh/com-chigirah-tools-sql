@@ -10,7 +10,7 @@ import java.time.LocalDateTime
 internal class InsertQueryFacadeTest {
     @Test
     @DisplayName("succeed insert query")
-    fun createInsertQuery() {
+    fun test() {
         val tableDef = SampleDefinition()
 
         val row1 = SampleRow(

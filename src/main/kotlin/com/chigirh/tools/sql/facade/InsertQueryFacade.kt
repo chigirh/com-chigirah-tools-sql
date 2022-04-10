@@ -8,9 +8,18 @@ import java.nio.file.Path
 object InsertQueryFacade {
     fun TableDefinition.generateSql(rows: List<RowBase>): String? {
         if (rows.isEmpty()) return null
-        val sb = StringBuilder()
-        sb.append(this.generateInsert()).append("\r\n")
-        sb.append(rows.joinToString(",\r\n", "", ";") { this.generateValues(it) })
+        val sb = StringBuilder().apply {
+            append(generateInsert()).append("\r\n")
+            append(rows.joinToString(",\r\n", "", ";") { generateValues(it) })
+        }
+
+        return sb.toString()
+    }
+
+    fun TableDefinition.generateSql(row: RowBase): String {
+        val sb = StringBuilder().apply {
+            append(generateInsert()).append(generateValues(row)).append(";")
+        }
         return sb.toString()
     }
 

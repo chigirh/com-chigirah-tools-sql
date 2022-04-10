@@ -17,4 +17,13 @@ object RowUtils {
 
     fun LocalDateTime.toSqlString(): String = this.format(DATETIME_FORMATTER)
 
+    fun Any?.getSqlValue() = this?.let {
+        when (it) {
+            is String -> "'$it'"
+            is Int -> "$it"
+            is Boolean -> "$it"
+            is LocalDateTime -> "'${it.toSqlString()}'"
+            else -> "null"
+        }
+    } ?: "null"
 }
