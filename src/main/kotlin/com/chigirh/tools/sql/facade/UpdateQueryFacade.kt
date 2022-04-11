@@ -11,7 +11,7 @@ object UpdateQueryFacade {
     fun TableDefinition.generateSql(query: UpdateQuery, row: RowBase): String {
         val sb = StringBuilder().apply {
             append("update $name")
-            append(query.sets.joinToString(", ", " set", "") { it.generateSql(row) })
+            append(query.sets.joinToString(", ", " set ", "") { it.generateSql(row) })
             append(query.wheres.joinToString("", " where", ";") { it.generateSql() })
         }
         return sb.toString()
